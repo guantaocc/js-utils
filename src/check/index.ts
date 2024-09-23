@@ -96,6 +96,14 @@ const checkColor16 = (color: string): boolean => {
   return color16Reg.test(color);
 };
 
+/**
+ * 固定电话
+ */
+const checkBaseNumber = (str: string): boolean => {
+  const numberReg = /(^[0-9]{3,4}-[0-9]{7,9}$)/
+  return numberReg.test(str)
+}
+
 export {
   checkColor16,
   checkCreditCode,
@@ -105,5 +113,6 @@ export {
   checkUrl,
   checkPlateNumber,
   checkObjType,
-  checkPasswordStonger
+  checkPasswordStonger,
+  checkBaseNumber
 };
