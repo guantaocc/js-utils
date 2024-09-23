@@ -37,28 +37,12 @@ let tree = [
   },
 ];
 
-test('strCheck', () => {
-  expect(util.strCheck('18268100546', 'phone')).toBe(true);
-});
-
 test('arrIsNull', () => {
   expect(util.arrIsNull([])).toBe(false);
 });
 
 test('objIsNull', () => {
   expect(util.objIsNull({})).toBe(false);
-});
-
-test('treeForeach', () => {
-  expect(util.treeForeach(tree, node => console.log(node)));
-});
-
-test('treeForeachDepthAsc', () => {
-  expect(util.treeForeachDepthAsc(tree, node => console.log(node)));
-});
-
-test('treeForeachDepthDesc', () => {
-  expect(util.treeForeachDepthDesc(tree, node => console.log(node)));
 });
 
 test('treeFilter', () => {

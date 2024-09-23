@@ -4,20 +4,23 @@
  * @returns {string}
  */
 interface TreeItem {
-  id?: string | number
-  name?: string
-  children?: TreeItem[]
-  [key: string]: any
+  id?: string | number;
+  name?: string;
+  children?: TreeItem[];
+  [key: string]: any;
 }
-const cloneDeep = (data: TreeItem[]): TreeItem[] => 'structuredClone' in window ? (window as any).structuredClone(data) : JSON.parse(JSON.stringify(data, (k, v) => v ? v : ''));
+const cloneDeep = (data: TreeItem[]): TreeItem[] =>
+  'structuredClone' in window
+    ? (window as any).structuredClone(data)
+    : JSON.parse(JSON.stringify(data, (k, v) => (v ? v : '')));
 
 /**
-* 复杂数据深拷贝
-* @param target 值中包含正则、函数等...
-* @param map
-* @returns {{}}
-*/
-type CloneDeepComplex = (target: any, map?: WeakMap<{}, any>) => any
+ * 复杂数据深拷贝
+ * @param target 值中包含正则、函数等...
+ * @param map
+ * @returns {{}}
+ */
+type CloneDeepComplex = (target: any, map?: WeakMap<{}, any>) => any;
 const cloneDeepComplex: CloneDeepComplex = (target: any, map = new WeakMap()) => {
   if (target instanceof Date) return new Date(target);
   if (target instanceof RegExp) return new RegExp(target);
@@ -30,11 +33,8 @@ const cloneDeepComplex: CloneDeepComplex = (target: any, map = new WeakMap()) =>
   map.set(target, cloneObj);
 
   for (const key of Reflect.ownKeys(target)) {
-      const value = target[key];
-      cloneObj[key] =
-          value instanceof Object && typeof value !== 'function'
-              ? cloneDeepComplex(value, map)
-              : value;
+    const value = target[key];
+    cloneObj[key] = value instanceof Object && typeof value !== 'function' ? cloneDeepComplex(value, map) : value;
   }
   return cloneObj;
 };

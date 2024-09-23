@@ -37,11 +37,19 @@ const checkPhoneNumber = (phone: string): boolean => {
 
 // 验证密码
 // good // 弱：纯数字，纯字母
-export const checkPassword = (str: string): boolean => (/^(?:\d+|[a-zA-Z]+|[!@#$%^&*`()\-+=_?.,~]+)$/).test(str);
+const checkPassword = (str: string): boolean => (/^(?:\d+|[a-zA-Z]+|[!@#$%^&*`()\-+=_?.,~]+)$/).test(str);
 // better // 中：字母+数字，字母+特殊字符，数字+特殊字符
-export const checkPasswordBetter = (str: string): boolean => (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*`()\-+=_?.,~]+$)[a-zA-Z\d!@#$%^&*`()\-+=_?.,~]+$/).test(str);
+const checkPasswordBetter = (str: string): boolean => (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*`()\-+=_?.,~]+$)[a-zA-Z\d!@#$%^&*`()\-+=_?.,~]+$/).test(str);
 // best // 强：字母+数字+特殊字符
-export const checkPasswordBest = (str: string): boolean => (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*`()\-+=_?.,~]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*`()\-+=_?.,~]+$)(?![\d!@#$%^&*`()\-+=_?.,~]+$)[a-zA-Z\d!@#$%^&*`()\-+=_?.,~]+$/).test(str);
+const checkPasswordBest = (str: string): boolean => (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*`()\-+=_?.,~]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*`()\-+=_?.,~]+$)(?![\d!@#$%^&*`()\-+=_?.,~]+$)[a-zA-Z\d!@#$%^&*`()\-+=_?.,~]+$/).test(str);
+
+
+/**
+ * 强密码最少八位、要包含大小写、特殊字符、数字
+ * @param str 密码
+ * @returns 
+ */
+const checkPasswordStonger = (str: string) : boolean => /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{8,}$/.test(str)
 
 /**
  * 检查数据类型
@@ -78,7 +86,6 @@ const checkEmail = (email: string): boolean => {
 const checkCreditCode: (value: string) => boolean = value => /^[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}$/g.test(value);
 
 
-
 /**
  * 验证16进制颜色
  * @param color
@@ -96,5 +103,7 @@ export {
   checkPhoneNumber,
   checkIDCard,
   checkUrl,
-  checkPlateNumber
+  checkPlateNumber,
+  checkObjType,
+  checkPasswordStonger
 };
