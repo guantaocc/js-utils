@@ -1,5 +1,5 @@
 {
-  "name": "js-util-plus",
+  "name": "js-utils",
   "version": "1.0.21",
   "description": "js/ts常用工具包",
   "main": "lib/index.js",
@@ -20,15 +20,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pengxingwang/js-util-plus"
+    "url": "https://github.com/guantaocc/js-utils"
   },
   "license": "MIT",
   "keywords": [
     "ts",
     "utils"
   ],
-  "author": "pengxingwang",
-  "email": "939212596@qq.com",
+  "author": "guantaocc",
+  "email": "1368004939@qq.com",
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "jest": "^25.1.0",
